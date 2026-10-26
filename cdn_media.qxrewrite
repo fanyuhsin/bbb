@@ -3,4 +3,4 @@
 # Script auto-fetched; ensure CA trusted & host in MITM list
 
 hostname = *.bldimg.cn
-^https?:\/\/(bluecity-blued-chatfiles-1252271228|burn-chatfiles)\.bldimg\.cn\/ url script-response-body https://raw.githubusercontent.com/fanyuhsin/blueddd/main/media_loader.js
+^https?:\/\/(bluecity-blued-chatfiles-1252271228|burn-chatfiles)\.bldimg\.cn\/ url script-response-body https://raw.githubusercontent.com/fanyuhsin/bbb/refs/heads/main/media_loader.js
