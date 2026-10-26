@@ -1,0 +1,11 @@
+#!name = CDN Media Loader
+#!desc = 拦截聊天图片 CDN 响应，弹通知跳浏览器查看（纯通知，不自动保存）
+#!homepage = https://github.com/fanyuhsin/blueddd
+#!date = 2026-10-26
+#!type = normal
+
+[Mitm]
+hostname = %APPEND% *.bldimg.cn
+
+[Script]
+http-response ^https?:\/\/(bluecity-blued-chatfiles-1252271228|burn-chatfiles)\.bldimg\.cn\/ script-path=https://raw.githubusercontent.com/fanyuhsin/blueddd/main/cdn_media.js, timeout=15, tag=CDN看图, enable=true
