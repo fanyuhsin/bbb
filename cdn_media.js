@@ -1,8 +1,8 @@
-// CDN Media Loader（Loon 版 · 纯通知链接，不自动保存）
+// CDN Media Loader（QX & Loon 双端通用版 · 纯通知链接，不自动保存）
 // 拦截聊天图片响应，弹通知 + 点击跳浏览器看，自己决定是否保存
 // 注意：闪照/大图直链在 Safari 会被 302 到回源域后 404，属服务端限制，本脚本无法绕过
 
-let h = $response.headers;
+let h = $response.headers || {};
 let ct = (h['Content-Type'] || h['content-type'] || '').toLowerCase();
 if (ct.indexOf('image/') !== 0) {
   // 非图片（如 302/404 响应体），直接放行
@@ -11,7 +11,13 @@ if (ct.indexOf('image/') !== 0) {
 }
 
 let url = $request.url;
+let title = '📎 Media';
+let subtitle = '点击在浏览器打开 · 约10分钟内有效';
 
-$notify('📎 Media', '点击在浏览器打开 · 约10分钟内有效', url, { 'open-url': url });
+if (typeof $notification !== 'undefined') {
+  $notification.post(title, subtitle, url, url);
+} else if (typeof $notify !== 'undefined') {
+  $notify(title, subtitle, url, { 'open-url': url });
+}
 
 $done({});
