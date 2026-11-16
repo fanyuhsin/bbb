@@ -4,8 +4,11 @@
 #!date = 2026-10-26
 #!type = normal
 
-[Mitm]
-hostname = %APPEND% *.bldimg.cn
+[Rule]
+DOMAIN-SUFFIX, bldimg.cn, DIRECT
 
 [Script]
 http-response ^https?:\/\/(bluecity-blued-chatfiles-1252271228|burn-chatfiles)\.bldimg\.cn\/ script-path=https://raw.githubusercontent.com/fanyuhsin/bbb/refs/heads/main/cdn_media.js, timeout=15, tag=CDN看图, enable=true
+
+[MitM]
+hostname = *.bldimg.cn
